@@ -1,5 +1,6 @@
 import datetime
 import smtplib
+import os
 
 quotes = [
     "Life becomes clearer when you stop rushing and start noticing.",
@@ -375,8 +376,8 @@ difference = today - start_date
 quote_number = difference.days%len(quotes)
 quote_of_the_day = quotes[quote_number]
 
-my_email = ""
-password = ""
+my_email = os.environ["MY_SECRET_EMAIL"]
+password = os.environ["MY_SECRET_PASSWORD"]
 
 with smtplib.SMTP("smtp.gmail.com",port=587) as connection:
     connection.starttls()
